@@ -9,32 +9,33 @@
  <title>Breaking News: AI breakthrough thanks to Home Office AIA team</title>
   <style>
     body {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      margin: 0;
+      background: black;
+      overflow: hidden;
+    }
+    #rickroll {
+      width: 100vw;
       height: 100vh;
-      background: #111;
-      color: white;
-      font-family: Arial, sans-serif;
+      object-fit: cover;
     }
-    #continue-btn {
-      padding: 15px 30px;
-      font-size: 1.2em;
+    #notice {
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      font-size: 12px;
+      font-family: system-ui, sans-serif;
+      color: rgba(200, 200, 200, 0.8);
       cursor: pointer;
-      background: #4caf50;
-      border: none;
-      border-radius: 8px;
-      color: white;
+      user-select: none;
     }
-    iframe {
-      display: none; /* hidden until they click */
-      margin-top: 20px;
+    #notice:hover {
+      text-decoration: underline;
+      color: white;
     }
   </style>
 </head>
 <body>
-  <h1>Home office security check sucessful click to continue or wait to be re-directed</h1>
+  <h1>Security check sucessful click to continue or wait to be re-directed</h1>
   <button id="continue-btn">Continue</button>
 
   <iframe id="rickroll" width="100%" height="600"
