@@ -4,63 +4,75 @@
   <meta charset="UTF-8">
   <meta property="og:title" content="Breaking News: AI breakthrough thanks to Home Office AIA team" />
   <meta property="og:description" content="Shocking discovery when the media realised an AI Analysis team within Home Office..." />
-  <meta property="og:image" content="https://quentindh1.github.io/redirect/rick.jpg" />
+  <meta property="og:image" content="https://user.github.io/redirect/rick.jpg" />
   <meta property="og:url" content="https://quentindh1.github.io/redirect/" />
- <title>Breaking News: AI breakthrough thanks to Home Office AIA team</title>
+ 
+  <title>Breaking News: AI breakthrough</title>
   <style>
     body {
       margin: 0;
-      background: black;
+      background: white;
+      font-family: system-ui, sans-serif;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
     }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    #continue-btn {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
     #rickroll {
+      display: none;       /* hidden initially */
       width: 100vw;
       height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
       object-fit: cover;
-    }
-    #notice {
-      position: absolute;
-      top: 8px;
-      right: 12px;
-      font-size: 12px;
-      font-family: system-ui, sans-serif;
-      color: rgba(200, 200, 200, 0.8);
-      cursor: pointer;
-      user-select: none;
-    }
-    #notice:hover {
-      text-decoration: underline;
-      color: white;
+      z-index: 9999;
     }
   </style>
 </head>
 <body>
-  <h1>Security check sucessful click to continue or wait to be re-directed</h1>
+  <h1>Security check successful. Click to continue or wait to be redirected</h1>
   <button id="continue-btn">Continue</button>
 
-  <iframe id="rickroll" width="100%" height="600"
+  <iframe id="rickroll"
           src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?enablejsapi=1"
           frameborder="0"
           allow="autoplay; encrypted-media"
-          allowfullscreen></iframe>
+          allowfullscreen>
+  </iframe>
 
   <script>
     const btn = document.getElementById("continue-btn");
     const iframe = document.getElementById("rickroll");
+    let player;
+
+    // YouTube IFrame API callback
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player("rickroll");
+    }
 
     btn.addEventListener("click", () => {
-      btn.style.display = "none";       // hide button
-      iframe.style.display = "block";   // show video
+      btn.style.display = "none";      // hide button
+      iframe.style.display = "block";  // show video
 
-      // Use YouTube Player API to autoplay with sound
-      const player = new YT.Player("rickroll", {
-        events: {
-          onReady: (event) => {
-            event.target.unMute(); // make sure it's not muted
-            event.target.playVideo();
-          }
-        }
-      });
+      if (player) {
+        player.unMute();
+        player.playVideo();
+      }
     });
 
     // Load YouTube API script dynamically
